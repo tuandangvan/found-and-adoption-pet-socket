@@ -13,10 +13,10 @@ const socketServer = () => {
   // Lắng nghe kết nối từ các client
   io.on("connection", (socket) => {
     console.log("A client connected");
-    socket.on("addNewUser", (userId) => {
-      !onlineUsers.some((user) => userId === user.userId) &&
+    socket.on("addNewUser", (data) => {
+      !onlineUsers.some((user) => data.userId === user.userId) &&
         onlineUsers.push({
-          userId,
+          userId: data.userId,
           socketId: socket.id
         });
       console.log("localUser", onlineUsers);
