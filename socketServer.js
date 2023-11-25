@@ -1,9 +1,12 @@
 import { Server } from "socket.io";
 import express from "express";
+import "dotenv/config";
 
 const socketServer = () => {
   const app = express();
-  const server = app.listen(5000,'0.0.0.0', () => {});
+  const server = app.listen(process.env.PORT,'0.0.0.0', () => {
+    console.log(process.env.PORT)
+  });
   const io = new Server(server, { cors: "https://localhost:8050" });
   console.log("Running socket!");
   let onlineUsers = [];
