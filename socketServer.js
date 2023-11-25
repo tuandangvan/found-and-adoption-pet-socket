@@ -3,7 +3,7 @@ import express from "express";
 
 const socketServer = () => {
   const app = express();
-  const server = app.listen(5000, () => {});
+  const server = app.listen(5000,'0.0.0.0', () => {});
   const io = new Server(server, { cors: "https://localhost:8050" });
   console.log("Running socket!");
   let onlineUsers = [];
